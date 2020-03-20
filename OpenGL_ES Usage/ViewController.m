@@ -7,8 +7,16 @@
 //
 
 #import "ViewController.h"
+#import <OpenGLES/gltypes.h>
+#import <OpenGLES/EAGLDrawable.h>
+#import <OpenGLES/EAGL.h>
+#import <OpenGLES/ES3/gl.h>
+#import <OpenGLES/ES3/glext.h>
 
-@interface ViewController ()
+@interface ViewController () {
+    
+    
+}
 
 @end
 
@@ -16,6 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    
     // Do any additional setup after loading the view.
 }
 

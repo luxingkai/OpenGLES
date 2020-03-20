@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		113F066C24246A4500149C52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F066B24246A4500149C52 /* AppDelegate.m */; };
-		113F066F24246A4500149C52 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F066E24246A4500149C52 /* SceneDelegate.m */; };
 		113F067224246A4500149C52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F067124246A4500149C52 /* ViewController.m */; };
 		113F067524246A4500149C52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113F067324246A4500149C52 /* Main.storyboard */; };
 		113F067724246A4600149C52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113F067624246A4600149C52 /* Assets.xcassets */; };
@@ -39,8 +38,6 @@
 		113F066724246A4500149C52 /* OpenGL_ES Usage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenGL_ES Usage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F066A24246A4500149C52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		113F066B24246A4500149C52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		113F066D24246A4500149C52 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		113F066E24246A4500149C52 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		113F067024246A4500149C52 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		113F067124246A4500149C52 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		113F067424246A4500149C52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,8 +103,6 @@
 			children = (
 				113F066A24246A4500149C52 /* AppDelegate.h */,
 				113F066B24246A4500149C52 /* AppDelegate.m */,
-				113F066D24246A4500149C52 /* SceneDelegate.h */,
-				113F066E24246A4500149C52 /* SceneDelegate.m */,
 				113F067024246A4500149C52 /* ViewController.h */,
 				113F067124246A4500149C52 /* ViewController.m */,
 				113F067324246A4500149C52 /* Main.storyboard */,
@@ -270,7 +265,6 @@
 				113F067224246A4500149C52 /* ViewController.m in Sources */,
 				113F066C24246A4500149C52 /* AppDelegate.m in Sources */,
 				113F067D24246A4600149C52 /* main.m in Sources */,
-				113F066F24246A4500149C52 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
