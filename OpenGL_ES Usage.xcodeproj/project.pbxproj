@@ -14,6 +14,7 @@
 		113F067D24246A4600149C52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F067C24246A4600149C52 /* main.m */; };
 		113F068724246A4600149C52 /* OpenGL_ES_UsageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F068624246A4600149C52 /* OpenGL_ES_UsageTests.m */; };
 		113F069224246A4600149C52 /* OpenGL_ES_UsageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F069124246A4600149C52 /* OpenGL_ES_UsageUITests.m */; };
+		1159A1D42481343D00E3906A /* GLSL_ES_Specification_3.20.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1159A1D32481343D00E3906A /* GLSL_ES_Specification_3.20.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		113F068D24246A4600149C52 /* OpenGL_ES UsageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OpenGL_ES UsageUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F069124246A4600149C52 /* OpenGL_ES_UsageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenGL_ES_UsageUITests.m; sourceTree = "<group>"; };
 		113F069324246A4600149C52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1159A1D32481343D00E3906A /* GLSL_ES_Specification_3.20.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GLSL_ES_Specification_3.20.pdf; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				113F067824246A4600149C52 /* LaunchScreen.storyboard */,
 				113F067B24246A4600149C52 /* Info.plist */,
 				113F067C24246A4600149C52 /* main.m */,
+				1159A1D32481343D00E3906A /* GLSL_ES_Specification_3.20.pdf */,
 			);
 			path = "OpenGL_ES Usage";
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1159A1D42481343D00E3906A /* GLSL_ES_Specification_3.20.pdf in Resources */,
 				113F067A24246A4600149C52 /* LaunchScreen.storyboard in Resources */,
 				113F067724246A4600149C52 /* Assets.xcassets in Resources */,
 			);

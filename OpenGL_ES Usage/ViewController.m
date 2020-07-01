@@ -12,7 +12,7 @@
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/ES3/gl.h>
 #import <OpenGLES/ES3/glext.h>
-
+#import <GLKit/GLKit.h>
 
 /*
  Compatibility
@@ -25,9 +25,14 @@
  。但是，当GLSL ES 1.00着色器被用于OpenGL ES 3.x的api，这两种着色器都需要支持。
  */
 
+GLuint LoadShader(GLenum type, const char *shaderSrc);
+
 @interface ViewController () {
     
 }
+
+@property (nonatomic, strong) EAGLContext *context;
+@property (nonatomic, strong) GLKBaseEffect *effect;
 
 @end
 
@@ -37,18 +42,80 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    const char *vertexStr = "#version 300 es \n"
-    "void main() {                           \n"
-    "float foo;                              \n"
-    "}                                       \n";
-    printf("%s",vertexStr);
+//    char vShaderStr[] =
+//    "#version 300 es                          \n"
+//    "layout(location = 0) in vec4 vPosition;  \n"
+//    "void main()                              \n"
+//    "{                                        \n"
+//    "   gl_Position = vPosition;              \n"
+//    "}                                        \n";
+//
+//
+//    printf("%d",LoadShader ( GL_VERTEX_SHADER, vShaderStr ));
+    
     
 
     
     
     
+    
+    
     // Do any additional setup after loading the view.
 }
+
+///
+// Create a shader object, load the shader source, and
+// compile the shader.
+//
+GLuint LoadShader ( GLenum type, const char *shaderSrc )
+{
+    GLuint shader;
+    GLint compiled;
+    
+    // Create the shader object
+    shader = glCreateShader ( type );
+    
+    if ( shader == 0 )
+    {
+        return 0;
+    }
+    
+    // Load the shader source
+    glShaderSource ( shader, 1, &shaderSrc, NULL );
+    
+    // Compile the shader
+    glCompileShader ( shader );
+    
+    // Check the compile status
+    glGetShaderiv ( shader, GL_COMPILE_STATUS, &compiled );
+    
+    if ( !compiled )
+    {
+        GLint infoLen = 0;
+        
+        glGetShaderiv ( shader, GL_INFO_LOG_LENGTH, &infoLen );
+        
+        if ( infoLen > 1 )
+        {
+            char *infoLog = malloc ( sizeof ( char ) * infoLen );
+            
+            glGetShaderInfoLog ( shader, infoLen, NULL, infoLog );
+            printf("Error compiling shader:\n%s\n",infoLog);
+            free ( infoLog );
+        }
+        
+        glDeleteShader ( shader );
+        return 0;
+    }
+    return shader;
+}
+
+void Draw(void) {
+    
+    
+    
+}
+
 
 
 @end
