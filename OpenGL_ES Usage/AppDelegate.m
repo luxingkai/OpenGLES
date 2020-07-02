@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "GLKUsageController.h"
 
 @interface AppDelegate ()
 

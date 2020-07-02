@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111EEBD124AC7F510013B3F1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 111EEBD024AC7F510013B3F1 /* README.md */; };
+		111EEBD724AC85B60013B3F1 /* GLKUsageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111EEBD624AC85B60013B3F1 /* GLKUsageController.m */; };
+		111EEBD924AC885E0013B3F1 /* esShader.c in Sources */ = {isa = PBXBuildFile; fileRef = 111EEBD824AC885E0013B3F1 /* esShader.c */; };
 		113F066C24246A4500149C52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F066B24246A4500149C52 /* AppDelegate.m */; };
 		113F067224246A4500149C52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F067124246A4500149C52 /* ViewController.m */; };
 		113F067724246A4600149C52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113F067624246A4600149C52 /* Assets.xcassets */; };
@@ -35,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		111EEBD024AC7F510013B3F1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		111EEBD524AC85B60013B3F1 /* GLKUsageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLKUsageController.h; sourceTree = "<group>"; };
+		111EEBD624AC85B60013B3F1 /* GLKUsageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLKUsageController.m; sourceTree = "<group>"; };
+		111EEBD824AC885E0013B3F1 /* esShader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = esShader.c; sourceTree = "<group>"; };
+		111EEBDA24AC94690013B3F1 /* esUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = esUtil.h; sourceTree = "<group>"; };
 		113F066724246A4500149C52 /* OpenGL_ES Usage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenGL_ES Usage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113F066A24246A4500149C52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		113F066B24246A4500149C52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -101,15 +109,20 @@
 		113F066924246A4500149C52 /* OpenGL_ES Usage */ = {
 			isa = PBXGroup;
 			children = (
+				111EEBD024AC7F510013B3F1 /* README.md */,
 				113F066A24246A4500149C52 /* AppDelegate.h */,
 				113F066B24246A4500149C52 /* AppDelegate.m */,
 				113F067024246A4500149C52 /* ViewController.h */,
 				113F067124246A4500149C52 /* ViewController.m */,
+				111EEBD524AC85B60013B3F1 /* GLKUsageController.h */,
+				111EEBD624AC85B60013B3F1 /* GLKUsageController.m */,
+				113F067C24246A4600149C52 /* main.m */,
+				113F067B24246A4600149C52 /* Info.plist */,
+				1159A1D32481343D00E3906A /* GLSL_ES_Specification_3.20.pdf */,
 				113F067624246A4600149C52 /* Assets.xcassets */,
 				113F067824246A4600149C52 /* LaunchScreen.storyboard */,
-				113F067B24246A4600149C52 /* Info.plist */,
-				113F067C24246A4600149C52 /* main.m */,
-				1159A1D32481343D00E3906A /* GLSL_ES_Specification_3.20.pdf */,
+				111EEBD824AC885E0013B3F1 /* esShader.c */,
+				111EEBDA24AC94690013B3F1 /* esUtil.h */,
 			);
 			path = "OpenGL_ES Usage";
 			sourceTree = "<group>";
@@ -237,6 +250,7 @@
 			files = (
 				1159A1D42481343D00E3906A /* GLSL_ES_Specification_3.20.pdf in Resources */,
 				113F067A24246A4600149C52 /* LaunchScreen.storyboard in Resources */,
+				111EEBD124AC7F510013B3F1 /* README.md in Resources */,
 				113F067724246A4600149C52 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,8 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				111EEBD924AC885E0013B3F1 /* esShader.c in Sources */,
 				113F067224246A4500149C52 /* ViewController.m in Sources */,
 				113F066C24246A4500149C52 /* AppDelegate.m in Sources */,
+				111EEBD724AC85B60013B3F1 /* GLKUsageController.m in Sources */,
 				113F067D24246A4600149C52 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

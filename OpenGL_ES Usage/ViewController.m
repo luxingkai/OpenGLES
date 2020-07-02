@@ -13,6 +13,7 @@
 #import <OpenGLES/ES3/gl.h>
 #import <OpenGLES/ES3/glext.h>
 #import <GLKit/GLKit.h>
+#include "esUtil.h"
 
 /*
  Compatibility
@@ -25,10 +26,29 @@
  。但是，当GLSL ES 1.00着色器被用于OpenGL ES 3.x的api，这两种着色器都需要支持。
  */
 
-GLuint LoadShader(GLenum type, const char *shaderSrc);
+
+struct ESContext
+{
+    void    *userData;
+    
+    GLint   width;
+    GLint   height;
+};
+typedef struct ESContext ESContext;
+
+typedef struct
+{
+    GLuint programObject;
+} UserData;
+
+int esMain(ESContext *esContext);
+int Init (ESContext *esContext);
+void Draw (ESContext *esContext);
+
 
 @interface ViewController () {
     
+    ESContext _esContext;
 }
 
 @property (nonatomic, strong) EAGLContext *context;
@@ -40,81 +60,184 @@ GLuint LoadShader(GLenum type, const char *shaderSrc);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     
-//    char vShaderStr[] =
-//    "#version 300 es                          \n"
-//    "layout(location = 0) in vec4 vPosition;  \n"
-//    "void main()                              \n"
-//    "{                                        \n"
-//    "   gl_Position = vPosition;              \n"
-//    "}                                        \n";
-//
-//
-//    printf("%d",LoadShader ( GL_VERTEX_SHADER, vShaderStr ));
+    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
+    if (!self.context) {
+        NSLog(@"Failed to create ES context");
+    }
     
+    GLKView *view = (GLKView *)self.view;
+    view.context = self.context;
+    //    view.drawableDepthFormat = GLKViewDrawableDepthFormat16;
     
-
+    [EAGLContext setCurrentContext:self.context];
     
     
-    
+    memset(&_esContext, 0, sizeof(_esContext));
+    esMain(&_esContext);
     
     
     // Do any additional setup after loading the view.
 }
 
-///
-// Create a shader object, load the shader source, and
-// compile the shader.
-//
-GLuint LoadShader ( GLenum type, const char *shaderSrc )
-{
-    GLuint shader;
-    GLint compiled;
+#pragma mark --
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     
-    // Create the shader object
-    shader = glCreateShader ( type );
+    _esContext.width = view.drawableWidth;
+    _esContext.height = view.drawableHeight;
     
-    if ( shader == 0 )
-    {
-        return 0;
-    }
-    
-    // Load the shader source
-    glShaderSource ( shader, 1, &shaderSrc, NULL );
-    
-    // Compile the shader
-    glCompileShader ( shader );
-    
-    // Check the compile status
-    glGetShaderiv ( shader, GL_COMPILE_STATUS, &compiled );
-    
-    if ( !compiled )
-    {
-        GLint infoLen = 0;
-        
-        glGetShaderiv ( shader, GL_INFO_LOG_LENGTH, &infoLen );
-        
-        if ( infoLen > 1 )
-        {
-            char *infoLog = malloc ( sizeof ( char ) * infoLen );
-            
-            glGetShaderInfoLog ( shader, infoLen, NULL, infoLog );
-            printf("Error compiling shader:\n%s\n",infoLog);
-            free ( infoLog );
-        }
-        
-        glDeleteShader ( shader );
-        return 0;
-    }
-    return shader;
+    Draw(&_esContext);
 }
 
-void Draw(void) {
-    
-    
+- (void)glkViewControllerUpdate:(GLKViewController *)controller {
     
 }
+
+- (void)dealloc {
+    
+    [self tearDownGL];
+    
+    if ([EAGLContext currentContext] == self.context) {
+        [EAGLContext setCurrentContext:nil];
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+
+    if ([self isViewLoaded] && [[self view] window] == nil) {
+        self.view = nil;
+        [self tearDownGL];
+        if ([EAGLContext currentContext] == self.context) {
+            [EAGLContext setCurrentContext:nil];
+        }
+        self.context = nil;
+    }
+}
+
+
+
+- (void)tearDownGL {
+    
+    [EAGLContext setCurrentContext:self.context];
+    UserData *userData = _esContext.userData;
+    glDeleteProgram(userData->programObject);
+}
+
+
+int esMain(ESContext *esContext) {
+    
+    esContext->userData = malloc ( sizeof ( UserData ) );
+    
+    if (!Init(esContext)) {
+        return GL_FALSE;
+    }
+    return GL_TRUE;
+}
+
+
+int Init (ESContext *esContext) {
+    
+    UserData *userData = esContext->userData;
+    
+    char vShaderStr[] =
+    "#version 300 es                                \n"
+    "#define new 10                                 \n"
+    "#extension name : warn                         \n"
+    "#pragma optimize (on)                          \n"
+    "#pragma debug (on)                             \n"
+    "layout(location = 0) in vec4 vPosition;        \n"
+    "void main()                                    \n"
+    "{                                              \n"
+    "   gl_Position = vPosition;                    \n"
+    "}                                              \n";
+    
+    char fShaderStr[] =
+    "#version 300 es                                \n"
+    "precision mediump float;                       \n"
+    "out vec4 fragColor;                            \n"
+    "void main()                                    \n"
+    "{                                              \n"
+    "   fragColor = vec4 (1.0, 0.0, 0.0, 1.0);      \n"
+    "}                                              \n";
+    
+    GLuint vertexShader;
+    GLuint fragmentShader;
+    GLuint programObject;
+    GLint linked;
+    
+    //Load the vertex/fragment shaders
+    vertexShader = esLoadShader(GL_VERTEX_SHADER, vShaderStr);
+    fragmentShader = esLoadShader(GL_FRAGMENT_SHADER, fShaderStr);
+    
+    // Create the program object
+    programObject = glCreateProgram();
+    
+    if (programObject == 0) {
+        return 0;
+    }
+    
+    glAttachShader(programObject, vertexShader);
+    glAttachShader(programObject, fragmentShader);
+    
+    // Link the program
+    glLinkProgram(programObject);
+    
+    //Check the link status
+    glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
+    
+    if (!linked) {
+        GLint infoLen = 0;
+        
+        glGetProgramiv(programObject, GL_INFO_LOG_LENGTH, &infoLen);
+        
+        if (infoLen > 1) {
+            char *infoLog = malloc(sizeof(char) *infoLen);
+            
+            glGetProgramInfoLog(programObject, infoLen, NULL, infoLog);
+            printf("Error linking program:\n%s\n",infoLog);
+            
+            free(infoLog);
+        }
+        glDeleteProgram(programObject);
+        return false;
+    }
+    
+    // Store the program object
+    userData->programObject = programObject;
+    
+    glClearColor(1.0, 1.0, 1.0, 0.0);
+    return true;
+}
+
+void Draw (ESContext *esContext) {
+    
+    UserData *userData = esContext->userData;
+    GLfloat vVertices[] =
+    {
+        -0.5f, 0.5f, 0.0f,
+        0.5f, 0.5f, 0.0f,
+        -0.5f, -0.5f, 0.0f,
+    };
+    
+    //Set the viewport
+    glViewport(0, 0, esContext->width, esContext->height);
+    
+    //Clear the color buffer
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    // Use the program object
+    glUseProgram(userData->programObject);
+    
+    // Load the vertex data
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+    glEnableVertexAttribArray(0);
+    
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    
+}
+
 
 
 
