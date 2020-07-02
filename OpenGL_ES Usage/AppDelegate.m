@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "GLKUsageController.h"
+#import "ShaderViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +22,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    ViewController *vc = [ViewController new];
+    ShaderViewController *vc = [ShaderViewController new];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     
