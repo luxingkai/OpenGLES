@@ -77,8 +77,68 @@ usampler2DArray                                访问无符号整数2D数组纹�
 数组                  float foo[3];               
 结构、块和结构成员都可以是数组，只支持一维数组。        
 
-【4】限定符      
+【4】限定符          
+存储限定符       
+存储限定符可以放在变量声明之前。            
+none                                (默认)本地读/写内存，或者输入参数      
+const                               编译时常量， 或者只读函数参数     
+in                                     从前一个阶段链接到一个着色器       
+centriod in                     
+out                                  从着色器链接到下一个阶段                   
+centriod out                
+uniform                            在图元处理中值不改变 ，统一变量组成了着色器、OpenGL ES和应用程序的链接         
 
+-----------------------------------------------------------------------------------------------------
+下面的插值限定符用于着色器输入和输出，可以在in、centriod in、 out或者centriod out 之前。     
+smooth                          透视校正插值          
+flat                                 无插值        
+
+------------------------------------
+
+接口块         
+统一变量声明可以组合为命名的接口块       
+uniform Transform {     
+mat4 ModelViewProjectionMatrix;     
+float   Deformation;        
+}       
+
+布局限定符       
+layout(layout-qualifier) block-declaration      
+layout(layout-qualifier) in/out/uniform     
+layout(layout-qualifier) in/out/uniform declaration         
+
+输入布局限定符         
+对于所有着色器阶段：      
+location=整数常量       
+输出布局限定符：        
+对于所有着色器阶段：      
+location=整数常量       
+
+统一变量块布局限定符      
+shared, packed, std140, { row, column}_major            
+
+参数限定符       
+输入值在函数调用时复制，输出值在函数返回时复制。        
+无                       （默认）与in相同       
+in                          用于传入函数的函数参数     
+out                        用于传出函数，但是传入时没有初始化的参数     
+inout                      用于既传入函数又传出函数的参数      
+
+精度限定符       
+任何浮点、整数或者采样器声明都可以在前面加上如下精度限定符：      
+highp                              满足顶点语言的最低要求      
+mediump                         范围和精度介于lowp和highp之间     
+lowp                                范围和精度低于mediump，但是仍然能够表现任何颜色通道的所有颜色值     
+
+不变限定符事例     
+#pragma     STDGL invariant (all)               强制所有输出变量不变      
+invariant      gl_Position;                             限定之前声明的变量       
+invariant      centriod out vec3 color;          限定作为变量声明的一部分       
+
+限定顺序            
+存在多个限定时， 它们必须遵循严格的顺序。这个顺序是如下所列的一个：      
+不变性，插值，存储，精度        
+存储，参数， 精度       
 
 【5】聚合操作和构造器     
 
@@ -131,6 +191,12 @@ uniform gl_DepthRangeParameters     gl_DepthRange
 
 
 【8】内建函数         
+
+
+
+
+
+
 
 
 
