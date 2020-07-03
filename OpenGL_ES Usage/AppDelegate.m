@@ -10,6 +10,13 @@
 #import "ViewController.h"
 #import "GLKUsageController.h"
 #import "ShaderViewController.h"
+#import "VertexViewController.h"
+#import "DrawViewController.h"
+#import "VertexShaderController.h"
+#import "TextureViewController.h"
+#import "FragmentShaderController.h"
+#import "FragmentViewController.h"
+#import "FrameBufferController.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +29,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    ShaderViewController *vc = [ShaderViewController new];
+    VertexViewController *vc = [VertexViewController new];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     

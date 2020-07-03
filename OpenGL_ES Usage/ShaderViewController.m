@@ -7,6 +7,9 @@
 //
 
 #import "ShaderViewController.h"
+#import <OpenGLES/ES3/glext.h>
+#import <OpenGLES/ES3/gl.h>
+#import <OpenGLES/gltypes.h>
 #import "esUtil.h"
 
 @interface ShaderViewController ()
@@ -16,6 +19,8 @@
 @end
 
 @implementation ShaderViewController
+
+GLuint loadShader (GLenum type, const char *shaderSrc);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,25 +32,90 @@
     
     [EAGLContext setCurrentContext:self.context];
     
-    glClearColor(1.0, 1.0, 1.0, 0.0);
+    
+#pragma mark -- 着色器语言
     
     char vShaderSrc[] =
     "#version 300 es                        \n"
     "layout(location = 0) in vec3 Positon;  \n"
+    "uniform transformBlock                 \n"
+    "{                                      \n"
+    "   mat4  matViewProj;                  \n"
+    "   mat3  matNormal;                    \n"
+    "   mat3  matTexGen;                    \n"
+    "};                                     \n"
+    "layout(shared, column_major) uniform;  \n"
     "void main()                            \n"
     "{                                      \n"
     "                                       \n"
-    "}                                      \n";
+    "}                                      \n"; 
+                    
+    printf("load shader = %d", loadShader(GL_VERTEX_SHADER, vShaderSrc));
     
-    esLoadShader(GL_VERTEX_SHADER, vShaderSrc);
+#pragma mark -- 着色器对象和程序对象
     
     
+#pragma mark -- 统一变量和属性
+    
+    
+#pragma mark -- 着色器编译器
+    
+    
+#pragma mark -- 程序二进制码
     
     
     
     
     // Do any additional setup after loading the view.
 }
+
+#pragma mark -- GLKViewControllerDelegate
+
+- (void)glkViewControllerUpdate:(GLKViewController *)controller {
+    
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+    
+}
+
+
+
+GLuint loadShader (GLenum type, const char *shaderSrc) {
+    
+    GLuint shader;
+    GLint compiled;
+    
+    shader = glCreateShader(type);
+    
+    if (shader == 0) {
+        return 0;
+    }
+    
+    glShaderSource(shader, 1, &shaderSrc, NULL);
+    
+    glCompileShader(shader);
+    
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
+    
+    if (compiled == 0) {
+        
+        GLint infoLen;
+        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
+        
+        if (infoLen > 1) {
+            char *infoLog = malloc(sizeof(char) *infoLen);
+            
+            glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
+            printf("Error compiled \n%s\n",infoLog);
+            free(infoLog);
+        }
+        glDeleteShader(shader);
+        return 0;
+    }
+    return shader;
+}
+
 
 /*
 #pragma mark - Navigation

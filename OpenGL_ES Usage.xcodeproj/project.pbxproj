@@ -18,6 +18,13 @@
 		113F068724246A4600149C52 /* OpenGL_ES_UsageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F068624246A4600149C52 /* OpenGL_ES_UsageTests.m */; };
 		113F069224246A4600149C52 /* OpenGL_ES_UsageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113F069124246A4600149C52 /* OpenGL_ES_UsageUITests.m */; };
 		11421B7124ADC19800DED2A7 /* ShaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11421B7024ADC19800DED2A7 /* ShaderViewController.m */; };
+		11513B9B24AF3008003B872F /* VertexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11513B9A24AF3008003B872F /* VertexViewController.m */; };
+		11513B9E24AF3195003B872F /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11513B9D24AF3195003B872F /* DrawViewController.m */; };
+		11513BA124AF38CD003B872F /* VertexShaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11513BA024AF38CD003B872F /* VertexShaderController.m */; };
+		11513BA424AF38DC003B872F /* TextureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11513BA324AF38DC003B872F /* TextureViewController.m */; };
+		11513BA724AF3909003B872F /* FragmentShaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11513BA624AF3909003B872F /* FragmentShaderController.m */; };
+		11513BAA24AF393A003B872F /* FragmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11513BA924AF393A003B872F /* FragmentViewController.m */; };
+		11513BAD24AF3967003B872F /* FrameBufferController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11513BAC24AF3967003B872F /* FrameBufferController.m */; };
 		1159A1D42481343D00E3906A /* GLSL_ES_Specification_3.20.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1159A1D32481343D00E3906A /* GLSL_ES_Specification_3.20.pdf */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +68,20 @@
 		113F069324246A4600149C52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11421B6F24ADC19800DED2A7 /* ShaderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderViewController.h; sourceTree = "<group>"; };
 		11421B7024ADC19800DED2A7 /* ShaderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShaderViewController.m; sourceTree = "<group>"; };
+		11513B9924AF3008003B872F /* VertexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexViewController.h; sourceTree = "<group>"; };
+		11513B9A24AF3008003B872F /* VertexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VertexViewController.m; sourceTree = "<group>"; };
+		11513B9C24AF3195003B872F /* DrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
+		11513B9D24AF3195003B872F /* DrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
+		11513B9F24AF38CD003B872F /* VertexShaderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexShaderController.h; sourceTree = "<group>"; };
+		11513BA024AF38CD003B872F /* VertexShaderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VertexShaderController.m; sourceTree = "<group>"; };
+		11513BA224AF38DC003B872F /* TextureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureViewController.h; sourceTree = "<group>"; };
+		11513BA324AF38DC003B872F /* TextureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextureViewController.m; sourceTree = "<group>"; };
+		11513BA524AF3909003B872F /* FragmentShaderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FragmentShaderController.h; sourceTree = "<group>"; };
+		11513BA624AF3909003B872F /* FragmentShaderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FragmentShaderController.m; sourceTree = "<group>"; };
+		11513BA824AF393A003B872F /* FragmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FragmentViewController.h; sourceTree = "<group>"; };
+		11513BA924AF393A003B872F /* FragmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FragmentViewController.m; sourceTree = "<group>"; };
+		11513BAB24AF3967003B872F /* FrameBufferController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FrameBufferController.h; sourceTree = "<group>"; };
+		11513BAC24AF3967003B872F /* FrameBufferController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrameBufferController.m; sourceTree = "<group>"; };
 		1159A1D32481343D00E3906A /* GLSL_ES_Specification_3.20.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GLSL_ES_Specification_3.20.pdf; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -121,6 +142,20 @@
 				111EEBD624AC85B60013B3F1 /* GLKUsageController.m */,
 				11421B6F24ADC19800DED2A7 /* ShaderViewController.h */,
 				11421B7024ADC19800DED2A7 /* ShaderViewController.m */,
+				11513B9924AF3008003B872F /* VertexViewController.h */,
+				11513B9A24AF3008003B872F /* VertexViewController.m */,
+				11513B9C24AF3195003B872F /* DrawViewController.h */,
+				11513B9D24AF3195003B872F /* DrawViewController.m */,
+				11513B9F24AF38CD003B872F /* VertexShaderController.h */,
+				11513BA024AF38CD003B872F /* VertexShaderController.m */,
+				11513BA224AF38DC003B872F /* TextureViewController.h */,
+				11513BA324AF38DC003B872F /* TextureViewController.m */,
+				11513BA524AF3909003B872F /* FragmentShaderController.h */,
+				11513BA624AF3909003B872F /* FragmentShaderController.m */,
+				11513BA824AF393A003B872F /* FragmentViewController.h */,
+				11513BA924AF393A003B872F /* FragmentViewController.m */,
+				11513BAB24AF3967003B872F /* FrameBufferController.h */,
+				11513BAC24AF3967003B872F /* FrameBufferController.m */,
 				113F067C24246A4600149C52 /* main.m */,
 				113F067B24246A4600149C52 /* Info.plist */,
 				1159A1D32481343D00E3906A /* GLSL_ES_Specification_3.20.pdf */,
@@ -283,10 +318,17 @@
 			files = (
 				111EEBD924AC885E0013B3F1 /* esShader.c in Sources */,
 				113F067224246A4500149C52 /* ViewController.m in Sources */,
+				11513BAA24AF393A003B872F /* FragmentViewController.m in Sources */,
+				11513BA424AF38DC003B872F /* TextureViewController.m in Sources */,
 				113F066C24246A4500149C52 /* AppDelegate.m in Sources */,
+				11513BAD24AF3967003B872F /* FrameBufferController.m in Sources */,
 				111EEBD724AC85B60013B3F1 /* GLKUsageController.m in Sources */,
+				11513BA724AF3909003B872F /* FragmentShaderController.m in Sources */,
+				11513BA124AF38CD003B872F /* VertexShaderController.m in Sources */,
+				11513B9E24AF3195003B872F /* DrawViewController.m in Sources */,
 				113F067D24246A4600149C52 /* main.m in Sources */,
 				11421B7124ADC19800DED2A7 /* ShaderViewController.m in Sources */,
+				11513B9B24AF3008003B872F /* VertexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
