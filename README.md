@@ -48,11 +48,55 @@ GL_ES  如果在OpenGL ES 着色语言上运行， 定义为整数1
 
 
 【2】运算符和表达式      
+运算符
 
 
+向量分量        
+除了数组数值型下标语法之外，向量分量的名称可以用单个字母表示。分量可以混合和重合，例如: pos.xx, pos.zy         
+{x, y, z, w}      访问代表点或者法线的向量时使用               
+{r, g, b, a}       访问代表颜色的向量时使用     
+{s, t, p, q}       访问代表纹理坐标的向量时使用       
 
-【3】类型       
+【3】类型           
+着色器可以用数组和结构聚合以下类型，以构建更复杂的类型。没有指针类型。             
+基本类型                
+void                                                函数无返回值或者空的参数列表                
+bool                                                布尔值             
+int                                                   有符号和无符号整数     
+float                                                浮点标量       
+vec2, vec3, vec4                            n-分量浮点向量        
+bvec2, bvec3, bvec4                     布尔向量        
+ivec2, ivec3, ivec4                         有符号整数向量     
+uvec2, uvec3, uvec4                     无符号整数向量     
+mat2, mat3, mat4                           2 * 2， 3 * 3， 4 * 4 浮点矩阵     
+mat2 * 2, mat2 * 3, mat2 * 4        
+mat3 * 2 mat3 * 3, mat3 * 4         
+mat4 * 2 mat4 * 3, mat4 * 4           
 
+浮点采样器类型 （不透明）       
+sampler2D,  sampler3D                               访问2D或者3D纹理      
+samplerCube                                                 访问立方图纹理         
+samplerCubeShadow                                   访问带有对比的立方图深度纹理      
+sampler2DShadow                                          访问带有对比的2D深度纹理      
+sampler2DArray                                              访问2D数组纹理            
+sampler2DArrayShadow                                访问带有对比的2D数组深度纹理     
+
+有符号整数采样器类型 （不透明）        
+isampler2D, isampler3D          访问整数2D或者3D采样器       
+isamplerCube                            访问整数立方图纹理       
+isampler2DArray                        访问整数2D数组纹理       
+
+无符号整数采样器类型 （不透明）        
+usampler2D, usampler3D                  访问无符号整数2D或者3D采样器        
+usamplerCube                                    访问无符号整数立方图纹理        
+usampler2DArray                                访问无符号整数2D数组纹理        
+
+结构和数组       
+结构                struct type-name {        
+                            members         
+                        }struct-name[ ]; //可选变量声明或者数组       
+数组                  float foo[3];               
+结构、块和结构成员都可以是数组，只支持一维数组。        
 
 【4】限定符      
 
