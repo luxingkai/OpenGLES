@@ -148,8 +148,8 @@ int Init (ESContext *esContext) {
     "#pragma optimize (on)                          \n"
     "#pragma debug (on)                             \n"
     "layout(location = 0) in vec4 vPosition;        \n"
-    "layout(location = 1) in vec3 a_color;          \n"
-    "out vec3 v_color;                              \n"
+    "layout(location = 1) in vec4 a_color;          \n"
+    "out vec4 v_color;                              \n"
     "void main()                                    \n"
     "{                                              \n"
     "   v_color = a_color;                          \n"
@@ -217,12 +217,12 @@ int Init (ESContext *esContext) {
 void Draw (ESContext *esContext) {
     
     UserData *userData = esContext->userData;
+    GLfloat color[4] = {1.0f, 0.0f, 1.0f, 1.0f};
     GLfloat vVertices[] =
     {
-        -0.5f, 0.5f, 0.0f,
-        0.5f, 0.5f, 0.0f,
+        0.0f, 0.5f, 0.0f,
         -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f
+        0.5f, -0.5f, 0.0f,
     };
     
     //Set the viewport
@@ -235,11 +235,12 @@ void Draw (ESContext *esContext) {
     glUseProgram(userData->programObject);
     
     // Load the vertex data
+    glVertexAttrib4fv(0, color);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
     glEnableVertexAttribArray(0);
-    
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    
+                                                       
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDisableVertexAttribArray(1);
 }
 
 
