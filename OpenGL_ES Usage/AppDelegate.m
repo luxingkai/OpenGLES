@@ -29,7 +29,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    VertexViewController *vc = [VertexViewController new];
+    DrawViewController *vc = [DrawViewController new];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     

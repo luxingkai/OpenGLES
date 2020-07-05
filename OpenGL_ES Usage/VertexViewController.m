@@ -397,12 +397,33 @@ VERTEX_TEXCOORD1_SIZE)
 #pragma mark -- 复制缓冲区对象
     
     /*
+     OpenGL ES 3.0 可以从一个缓冲区对象将数据完全复制到设备，这可用glCopyBufferSubData函数完成。
      
      glCopyBufferSubData(<#GLenum readTarget#>, <#GLenum writeTarget#>, <#GLintptr readOffset#>, <#GLintptr writeOffset#>, <#GLsizeiptr size#>)
 
      readtarget      读取的缓冲区对象目标
-     writetarget     写
+     writetarget     写入的缓冲区对象目标。readtarget 和writetarget都可以设置为如下目标中的任何一个（尽管它们不必设置为同一个目标）：
+                    GL_ARRAY_BUFFER
+                    GL_ELEMENT_ARRAY_BUFFER
+                    GL_COPY_READ_BUFFER
+                    GL_COPY_WRITE_BUFFER
+                    GL_PIXEL_PACK_BUFFER
+                    GL_PIXEL_UNPACK_BUFFER
+                    GL_TRANSFORM_FEEDBACK_BUFFER
+                    GL_UNIFORM_BUFFER
+     readoffset     需要复制的读缓冲数据中的偏移量，以字节表示
+     writeoffset    需要复制的写缓冲数据中的偏移量，以字节表示
+     size           从读缓冲区数据复制到写缓冲区数据的字节数
+     
+     调用glCopyBufferSubData将从绑定到readtarget的缓冲区复制到指定的字节writetarget。缓冲区绑定根据每个目标的最后一次glBindBuffer调用确定。任何类型的缓冲区对象（数组、元素数组、变换反馈等）都可以绑定到GL_COPY_READ_BUFFER或GL_COPY_WRITE_BUFFER目标。这两个目标是一种方便的措施，使得应用程序在执行缓冲区间的复制时不必改变任何真正的缓冲区绑定。
      */
+//    glCopyBufferSubData(<#GLenum readTarget#>, <#GLenum writeTarget#>, <#GLintptr readOffset#>, <#GLintptr writeOffset#>, <#GLsizeiptr size#>)
+    
+    
+    
+    
+    
+    
     
     
 }
