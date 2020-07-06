@@ -18,6 +18,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    char vertexShader[] =
+    "#version 300 es                                    \n"
+    "main()                                             \n"
+    "{                                                  \n"
+    "                                                   \n"
+    "}                                                  \n";
+    
+    /*
+     顶点着色器可用于传统的基于顶点操作,例如通过矩阵变换位置、计算照明方程式以生成逐顶点的颜色以及生成或者变换纹理坐标。
+     
+     
+     */
+    
+    
     
     
 }

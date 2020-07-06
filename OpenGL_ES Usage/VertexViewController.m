@@ -85,19 +85,19 @@ VERTEX_TEXCOORD1_SIZE)
      index  指定通用顶点属性索引。这个值的范围从0到支持的最大顶点属性数 -1。
      size   顶点数组中为索引引用的顶点属性所指定的分量数量。有效值为1～4。
      type   数据格式。两个函数都包括的有效值是
-     GL_BYTE
-     GL_UNSIGNED_BYTE
-     GL_SHORT
-     GL_UNSIGNED_SHORT
-     GL_INT
-     GL_UNSIGNED_INT
+            GL_BYTE
+            GL_UNSIGNED_BYTE
+            GL_SHORT
+            GL_UNSIGNED_SHORT
+            GL_INT
+            GL_UNSIGNED_INT
      
      glVertexAttribPointer的有效值还包括
-     GL_HALF_FLOAT
-     GL_FLOAT
-     GL_FIXED
-     GL_INT_2_10_10_10_REV
-     GL_UNSIGNED_INT_2_10_10_10_REV
+            GL_HALF_FLOAT
+            GL_FLOAT
+            GL_FIXED
+            GL_INT_2_10_10_10_REV
+            GL_UNSIGNED_INT_2_10_10_10_REV
      normalized     (仅glVertexAttribPointer)用于表示非浮点数据格式类型在转换为浮点值时是否应该规范化。对于glVertexAttribPointer，这些值被当作是整数对待。
      stribe         每个顶点由size指定的顶点属性分量顺序存储。stride指定顶点索引I和（I+1）表示的顶点数据之间的位移。如果stride为0，则每个顶点的属性数据顺序存储。如果stride大于0，
      则使用该值作为获取下一个索引表示的顶点数据的跨距。
@@ -225,16 +225,16 @@ VERTEX_TEXCOORD1_SIZE)
      glBindBuffer 命令用于指定当前缓冲区对象。第一次通过调用glBindBuffer绑定缓冲区对象名称时，缓冲区对象以默认状态分配；如果分配成功，则分配的对象绑定为目标的当前缓冲区对象。
      
      glBindBuffer(<#GLenum target#>, <#GLuint buffer#>)
-     target          可以设置为以下目标的任何一个：
-     GL_ARRAY_BUFFER
-     GL_ELEMENT_ARRAY_BUFFER
-     GL_COPY_READ_BUFFER
-     GL_COPY_WRITE_BUFFER
-     GL_PIXEL_PACK_BUFFER
-     GL_PIXEL_UNPACK_BUFFER
-     GL_TRANSFORM_FEEDBACK_BUFFER
-     GL_UNIFORM_BUFFER
-     buffer         分配给目标作为当前对象的缓冲区对象
+     target             可以设置为以下目标的任何一个：
+                        GL_ARRAY_BUFFER
+                        GL_ELEMENT_ARRAY_BUFFER
+                        GL_COPY_READ_BUFFER
+                        GL_COPY_WRITE_BUFFER
+                        GL_PIXEL_PACK_BUFFER
+                        GL_PIXEL_UNPACK_BUFFER
+                        GL_TRANSFORM_FEEDBACK_BUFFER
+                        GL_UNIFORM_BUFFER
+     buffer             分配给目标作为当前对象的缓冲区对象
      */
     glBindBuffer(GL_ARRAY_BUFFER, buffers);
     
